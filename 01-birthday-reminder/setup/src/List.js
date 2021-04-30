@@ -1,11 +1,20 @@
 import React from 'react';
 
 const List = ({ people }) => {
-  let { id, name, age, image } = people[0];
-
   return (
     <>
-      <h1>{name}</h1>
+      {people.map(people => {
+        let { id, name, age, image } = people;
+        return (
+          <div key={id} className="person">
+            <img src={image} alt={name} />
+            <div>
+              <h4>{name}</h4>
+              <p>{age} Year</p>
+            </div>
+          </div>
+        );
+      })}
     </>
   );
 };
