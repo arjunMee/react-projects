@@ -1,20 +1,33 @@
 import React from 'react';
 import Tour from './Tour';
 
-const Tours = ({ tours }) => {
+function Tours({ tours, remove }) {
   return (
-    <section>
-      <div className="title">
-        <h2>Our Tour</h2>
-        <div className="userline"></div>
-      </div>
+    <main>
+      <h3 className="title">Our Tours</h3>
       <div>
         {tours.map(tour => {
-          return <Tour key={tour.id} {...tour}></Tour>;
+          return <Tour key={tour.id} {...tour} remove={remove} />;
         })}
       </div>
-    </section>
+    </main>
   );
-};
+}
 
 export default Tours;
+
+// const Tours = ({ tours, remove }) => {
+//   return (
+//     <section>
+//       <div className="title">
+//         <h2>Our Tour</h2>
+//         <div className="userline"></div>
+//       </div>
+//       <div>
+//         {tours.map(tour => {
+//           return <Tour key={tour.id} {...tour} remove={remove}></Tour>;
+//         })}
+//       </div>
+//     </section>
+//   );
+// };
