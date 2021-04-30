@@ -1,9 +1,11 @@
 import React from 'react';
 
-const List = () => {
+const List = ({ people }) => {
+  let { id, name, age, image } = people[0];
+
   return (
     <>
-      <h2>list component</h2>
+      <h1>{name}</h1>
     </>
   );
 };
