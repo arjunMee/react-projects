@@ -5,24 +5,53 @@ import data from './data';
 function App() {
   let [people, setPeople] = useState(data);
   const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const lastIndex = people.length - 1;
+    if (index < 0) {
+      setIndex(lastIndex);
+    }
+    if (index > lastIndex) {
+      setIndex(0);
+    }
+  }, [index, people]);
+
+  useEffect(() => {
+    let slider = setInterval(() => {
+      setIndex(index + 1);
+    }, 3000);
+    return () => clearInterval(slider);
+  }, [index]);
+
   return (
     <section className="section">
       <div className="title">
         <span>/</span>return
       </div>
+      {console.log('start')}
       <div className="section-center">
         {people.map((person, peopleIndex) => {
           const { id, image, name, title, quote } = person;
+
           //more stuff to come
           let position = 'nextSlide';
           if (peopleIndex === index) {
             position = 'activeSlider';
+            console.log('active slide');
           }
-          if (
-            peopleIndex === index - 1 ||
-            (index === 0 && peopleIndex == people.length - 1)
-          ) {
-            position = 'lastSlide';
+
+          {
+            if (
+              peopleIndex === index - 1 ||
+              (index === 0 && peopleIndex == people.length - 1)
+            ) {
+              console.log('last slide');
+              position = 'lastSlide';
+            }
+          }
+
+          {
+            console.log(`peopleIndex = ${peopleIndex}   index = ${index}`);
           }
           return (
             <article key={id} className={position}>
@@ -35,7 +64,6 @@ function App() {
           );
         })}
         <button className="prev" onClick={() => setIndex(index - 1)}>
-          {console.log(index)}
           <FiChevronLeft />
         </button>
         <button className="next" onClick={() => setIndex(index + 1)}>
