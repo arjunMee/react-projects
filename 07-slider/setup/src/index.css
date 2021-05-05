@@ -156,6 +156,7 @@ Slider
   margin: 0 auto;
   margin-top: 4rem;
   width: 80vw;
+  background-color: rgb(255, 174, 174);
   /* have to have a height */
   height: 450px;
   max-width: 800px;
@@ -242,7 +243,7 @@ article {
   /* opacity: 0; */
   transition: var(--transition);
 }
-/* article.activeSlide {
+article.activeSlide {
   opacity: 1;
   transform: translateX(0);
 }
@@ -251,4 +252,18 @@ article.lastSlide {
 }
 article.nextSlide {
   transform: translateX(100%);
+}
+
+/* .section-center {
+  margin: 0 auto;
+  margin-top: 4rem;
+  width: 80vw;
+  background-color: #aaa;
+ //// have to have a height 
+  height: 450px;
+  max-width: 800px;
+  text-align: center;
+  position: relative;
+  display: flex
+  ////overflow: hidden; 
 } */
